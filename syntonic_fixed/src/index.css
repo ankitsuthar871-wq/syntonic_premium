@@ -1,0 +1,115 @@
+@import "tailwindcss";
+
+@theme {
+  --color-cream: #FAFAF7;
+  --color-cream-dark: #F2F1EB;
+  --color-stone: #E2E2DC;
+  --color-stone-dark: #AEAE9F;
+  --color-charcoal: #17171F;
+  --color-charcoal-light: #2A2A3E;
+  --color-accent: #C9A96E;
+  --color-accent-light: #E8D5B0;
+  --color-accent-dark: #B08544;
+  --color-muted: #7A7A6A;
+
+  --font-heading: "Outfit", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, sans-serif;
+}
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-cream);
+  color: var(--color-charcoal);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  min-width: 320px;
+}
+
+/* ── Premium Scrollbar ── */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--color-cream); }
+::-webkit-scrollbar-thumb { background: var(--color-stone-dark); border-radius: 99px; }
+::-webkit-scrollbar-thumb:hover { background: var(--color-accent); }
+
+/* ── Selection ── */
+::selection { background-color: var(--color-accent); color: white; }
+
+/* ── Glass morphism ── */
+.glass {
+  background: rgba(250, 250, 247, 0.88);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(226, 226, 220, 0.5);
+}
+
+/* ── Text gradient ── */
+.text-gradient {
+  background: linear-gradient(120deg, var(--color-accent-dark) 0%, var(--color-accent) 50%, #E8C98A 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Card base ── */
+.card {
+  background: #ffffff;
+  border: 1px solid rgba(226, 226, 220, 0.7);
+  border-radius: 20px;
+  transition: box-shadow 0.4s ease, border-color 0.4s ease, transform 0.4s ease;
+}
+.card:hover {
+  box-shadow: 0 16px 48px rgba(201, 169, 110, 0.08), 0 4px 16px rgba(0,0,0,0.04);
+  border-color: rgba(201, 169, 110, 0.25);
+  transform: translateY(-3px);
+}
+
+/* ── Section label pill ── */
+.section-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 14px;
+  border-radius: 99px;
+  background: rgba(201, 169, 110, 0.1);
+  color: var(--color-accent-dark);
+  font-family: var(--font-body);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* ── Divider accent ── */
+.accent-line {
+  width: 36px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--color-accent), transparent);
+  border-radius: 99px;
+  margin: 16px auto 0;
+}
+
+/* ── Scrollbar hide ── */
+.scrollbar-hide::-webkit-scrollbar { display: none; }
+.scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* ── Mobile safe padding ── */
+.section-padding {
+  padding-top: clamp(64px, 10vw, 120px);
+  padding-bottom: clamp(64px, 10vw, 120px);
+}
+
+.content-padding {
+  padding-left: clamp(20px, 5vw, 80px);
+  padding-right: clamp(20px, 5vw, 80px);
+}
