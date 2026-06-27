@@ -37,7 +37,7 @@ const projects = [
     desc: 'AI-powered crop disease detection with real-time weather, market prices, and government scheme insights for farmers.',
     bg: 'linear-gradient(135deg, #e8f0e4 0%, #d0ddc8 100%)',
     accent: '#7A9B6D',
-    tags: ['React', 'Node.js', 'MongoDB'],
+    tags: ['JavaScript', 'Python', 'Machine Learning'],
     url: 'novawellness.co',
     link: 'https://agri-visionn.vercel.app/',
     img: '/agri.png',
