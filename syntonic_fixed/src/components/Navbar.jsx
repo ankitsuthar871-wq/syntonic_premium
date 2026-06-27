@@ -98,11 +98,11 @@ export default function Navbar() {
               <span
                 className="font-heading"
                 style={{
-                  fontWeight: 800,
-                  fontSize: 'clamp(16px, 2vw, 24px)',
+                  fontWeight: 600,
+                  fontSize: 'clamp(16px, 2vw, 20px)',
                   color: 'var(--color-charcoal, #1a1a1a)',
                   textTransform: 'uppercase',
-                  letterSpacing: '0.2em',
+                  letterSpacing: '0.1em',
                   transition: 'color 0.3s',
                 }}
               >
@@ -125,7 +125,7 @@ export default function Navbar() {
                     className="font-heading"
                     style={{
                       fontWeight: 700,
-                      fontSize: '17px',
+                      fontSize: '12px',
                       textTransform: 'uppercase',
                       letterSpacing: '0.15em',
                       textDecoration: 'none',

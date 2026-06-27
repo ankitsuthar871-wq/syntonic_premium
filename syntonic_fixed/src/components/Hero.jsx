@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { motion, useMotionValue, useSpring } from 'motion/react';
+import { motion } from 'motion/react';
 
 const words = [
   { text: 'We', accent: false },
@@ -11,19 +11,6 @@ const words = [
   { text: 'People', accent: false },
 ];
 
-const nodes = [
-  { x: 15, y: 22 }, { x: 38, y: 14 }, { x: 62, y: 20 }, { x: 85, y: 10 },
-  { x: 25, y: 42 }, { x: 50, y: 35 }, { x: 72, y: 45 }, { x: 92, y: 32 },
-  { x: 10, y: 62 }, { x: 40, y: 68 }, { x: 66, y: 72 }, { x: 88, y: 64 },
-  { x: 20, y: 88 }, { x: 55, y: 90 }, { x: 80, y: 85 },
-];
-
-const edges = [
-  [0, 1], [1, 2], [2, 3], [0, 4], [1, 5], [2, 6], [3, 7],
-  [4, 5], [5, 6], [6, 7], [4, 8], [5, 9], [6, 10], [7, 11],
-  [8, 9], [9, 10], [10, 11], [9, 12], [10, 13], [11, 14], [12, 13], [13, 14],
-];
-
 const services = [
   'UI/UX Design', 'Brand Identity', 'Web Development',
   'Digital Marketing', 'SEO Optimization', 'Motion Design',
@@ -31,19 +18,6 @@ const services = [
 
 export default function Hero() {
   const [hovered, setHovered] = useState(false);
-
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-  const springX = useSpring(mouseX, { stiffness: 40, damping: 18 });
-  const springY = useSpring(mouseY, { stiffness: 40, damping: 18 });
-
-  const handleMouseMove = (e) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const relX = (e.clientX - rect.left) / rect.width - 0.5;
-    const relY = (e.clientY - rect.top) / rect.height - 0.5;
-    mouseX.set(relX * 24);
-    mouseY.set(relY * 24);
-  };
 
   const scrollToContact = (e) => {
     e.preventDefault();
@@ -53,7 +27,6 @@ export default function Hero() {
   return (
     <section
       id="home"
-      onMouseMove={handleMouseMove}
       className="relative z-10 overflow-hidden"
       style={{
         minHeight: '100svh',
@@ -77,24 +50,6 @@ export default function Hero() {
           to { transform: rotate(360deg); }
         }
       `}</style>
-
-      {/* Network background — parallax */}
-      <motion.div className="absolute inset-0 pointer-events-none" style={{ x: springX, y: springY }}>
-        <svg
-          viewBox="0 0 100 100"
-          preserveAspectRatio="none"
-          className="absolute inset-0 w-full h-full"
-          style={{ opacity: 0.55 }}
-        >
-          {edges.map(([a, b], i) => (
-            <line key={i} x1={nodes[a].x} y1={nodes[a].y} x2={nodes[b].x} y2={nodes[b].y}
-              stroke="rgba(201,169,110,0.28)" strokeWidth="0.15" />
-          ))}
-          {nodes.map((n, i) => (
-            <circle key={i} cx={n.x} cy={n.y} r="0.45" fill="rgba(201,169,110,0.55)" />
-          ))}
-        </svg>
-      </motion.div>
 
       {/* Grain overlay */}
       <div
@@ -178,7 +133,6 @@ export default function Hero() {
               textDecoration: 'none',
               cursor: 'pointer',
               overflow: 'hidden',
-              // Gold border
               border: '1px solid rgba(201,169,110,0.6)',
               background: hovered
                 ? 'linear-gradient(135deg, #C9A96E 0%, #E8C97A 40%, #C9A96E 100%)'
@@ -189,7 +143,6 @@ export default function Hero() {
                 : '0 2px 12px rgba(201,169,110,0.1)',
             }}
           >
-            {/* Shimmer effect layer */}
             {hovered && (
               <motion.span
                 initial={{ opacity: 0 }}
@@ -205,7 +158,6 @@ export default function Hero() {
               />
             )}
 
-            {/* Button Text */}
             <span
               className="font-heading"
               style={{
@@ -222,7 +174,6 @@ export default function Hero() {
               Let's Talk
             </span>
 
-            {/* Animated Arrow */}
             <motion.span
               animate={{ x: hovered ? 4 : 0 }}
               transition={{ duration: 0.3, ease: 'easeOut' }}

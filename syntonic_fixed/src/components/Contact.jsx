@@ -82,16 +82,47 @@ export default function Contact() {
     return Object.keys(errs).length === 0;
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (!validate()) return;
-    setStatus('sending');
-    setTimeout(() => {
-      setStatus('sent');
-      setForm({ name: '', email: '', subject: '', message: '' });
-      setTimeout(() => setStatus('idle'), 4000);
-    }, 1200);
-  };
+ const handleSubmit = async (e) => {
+  e.preventDefault();
+
+  if (!validate()) return;
+
+  try {
+    setStatus("sending");
+
+    const response = await fetch(
+      "http://localhost:5000/api/contact",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(form),
+      }
+    );
+
+    const data = await response.json();
+
+    if (data.success) {
+      setStatus("sent");
+
+      setForm({
+        name: "",
+        email: "",
+        subject: "",
+        message: "",
+      });
+
+      setTimeout(() => {
+        setStatus("idle");
+      }, 4000);
+    }
+  } catch (error) {
+    console.log(error);
+    alert("Something went wrong");
+    setStatus("idle");
+  }
+};
 
   const handleChange = (field) => (e) => {
     setForm((p) => ({ ...p, [field]: e.target.value }));

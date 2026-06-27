@@ -6,65 +6,73 @@ const categories = ['All', 'Websites', 'E-Commerce', 'Web Apps', 'Branding'];
 
 const projects = [
   {
-    title: 'Luxe Cosmetics',
-    category: 'E-Commerce',
-    desc: 'Premium beauty brand e-commerce with immersive product experiences.',
-    bg: 'linear-gradient(135deg, #f5e6d3 0%, #e8d1b8 100%)',
-    accent: '#C9A96E',
-    tags: ['React', 'Tailwind', 'Vite'],
-    url: 'luxecosmetics.studio',
-    link: 'https://luxecosmetics.studio',
+    title: 'Ankit // Creative',
+    category: 'Websites',
+    desc: 'Building immersive, 3D-powered web experiences with clean code and thoughtful design.',
+    bg: 'linear-gradient(135deg, #f0e8e4 0%, #dcd0c8 100%)',
+    accent: '#B8866E',
+    tags: ['React', 'Tailwind', 'JavaScript'],
+    url: 'ankitsuthar.com',
+    link: 'https://ankittportfolio.vercel.app/',
+    img: '/final.png', // Yahan apni image ka path likhein
+    imgPosition: 'top left'
   },
+  // ... baki projects
+
   {
-    title: 'Vertex Finance',
-    category: 'Web Apps',
-    desc: 'Real-time fintech dashboard for portfolio management and analytics.',
+    title: 'Hindustan Mobile',
+    category: 'E-Commerce',
+    desc: 'Modern e-commerce store for mobile phones with sleek product showcase and seamless shopping experience.',
     bg: 'linear-gradient(135deg, #e0e5ec 0%, #c8d0dc 100%)',
     accent: '#5B6B8A',
-    tags: ['React', 'Chart.js', 'Tailwind'],
+    tags: ['React', 'E-Commerce', 'Tailwind'],
     url: 'vertexfinance.io',
-    link: 'https://vertexfinance.io',
+    link: 'https://hindustan-mobile.vercel.app/index.html',
+    img: '/mobile.png',
+    imgPosition: '60% 20%',
   },
   {
-    title: 'Nova Wellness',
-    category: 'Websites',
-    desc: 'Minimalist health platform with booking system and content hub.',
+    title: ' AgriVision',
+    category: 'Web Apps',
+    desc: 'AI-powered crop disease detection with real-time weather, market prices, and government scheme insights for farmers.',
     bg: 'linear-gradient(135deg, #e8f0e4 0%, #d0ddc8 100%)',
     accent: '#7A9B6D',
     tags: ['React', 'Node.js', 'MongoDB'],
     url: 'novawellness.co',
-    link: 'https://novawellness.co',
+    link: 'https://agri-visionn.vercel.app/',
+    img: '/agri.png',
+    imgPosition: '17% 20%',
   },
-  {
-    title: 'Atlas Ventures',
-    category: 'Branding',
-    desc: 'Complete brand identity and digital presence for a venture capital firm.',
-    bg: 'linear-gradient(135deg, #e8e4f0 0%, #d0c8dc 100%)',
-    accent: '#8B7AAE',
-    tags: ['Branding', 'Figma', 'Assets'],
-    url: 'atlasventures.vc',
-    link: 'https://atlasventures.vc',
-  },
-  {
-    title: 'Meridian Hotels',
-    category: 'Websites',
-    desc: 'Luxury hospitality website with virtual tours and instant booking.',
-    bg: 'linear-gradient(135deg, #f0e8e4 0%, #dcd0c8 100%)',
-    accent: '#B8866E',
-    tags: ['React', 'Three.js', 'GSAP'],
-    url: 'meridianhotels.com',
-    link: 'https://meridianhotels.com',
-  },
-  {
-    title: 'Pulse Fitness',
-    category: 'Web Apps',
-    desc: 'Interactive fitness platform with workout tracking and social features.',
-    bg: 'linear-gradient(135deg, #e4ecf0 0%, #c8d8dc 100%)',
-    accent: '#5A8A9B',
-    tags: ['React', 'Redux', 'Node.js'],
-    url: 'pulsefitness.app',
-    link: 'https://pulsefitness.app',
-  },
+//   {
+//     title: 'Atlas Ventures',
+//     category: 'Branding',
+//     desc: 'Complete brand identity and digital presence for a venture capital firm.',
+//     bg: 'linear-gradient(135deg, #e8e4f0 0%, #d0c8dc 100%)',
+//     accent: '#8B7AAE',
+//     tags: ['Branding', 'Figma', 'Assets'],
+//     url: 'atlasventures.vc',
+//     link: 'https://atlasventures.vc',
+//   },
+//   {
+//     title: 'Meridian Hotels',
+//     category: 'Websites',
+//     desc: 'Luxury hospitality website with virtual tours and instant booking.',
+//     bg: 'linear-gradient(135deg, #f0e8e4 0%, #dcd0c8 100%)',
+//     accent: '#B8866E',
+//     tags: ['React', 'Three.js', 'GSAP'],
+//     url: 'meridianhotels.com',
+//     link: 'https://meridianhotels.com',
+//   },
+//   {
+//     title: 'Pulse Fitness',
+//     category: 'Web Apps',
+//     desc: 'Interactive fitness platform with workout tracking and social features.',
+//     bg: 'linear-gradient(135deg, #e4ecf0 0%, #c8d8dc 100%)',
+//     accent: '#5A8A9B',
+//     tags: ['React', 'Redux', 'Node.js'],
+//     url: 'pulsefitness.app',
+//     link: 'https://pulsefitness.app',
+//   },
 ];
 
 // Abstract "browser preview" thumbnail — replace MockupThumbnail's content
@@ -72,7 +80,7 @@ const projects = [
 function MockupThumbnail({ project }) {
   return (
     <div style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
-      {/* Browser chrome bar */}
+      {/* Browser chrome bar — ab hamesha dikhega */}
       <div
         style={{
           display: 'flex',
@@ -80,6 +88,8 @@ function MockupThumbnail({ project }) {
           gap: '6px',
           padding: '8px 12px',
           background: 'rgba(0,0,0,0.05)',
+          position: 'relative',
+          zIndex: 2,
         }}
       >
         <span style={{ width: 7, height: 7, borderRadius: '50%', background: '#FF5F57' }} />
@@ -100,27 +110,50 @@ function MockupThumbnail({ project }) {
         </span>
       </div>
 
-      {/* Abstract UI body */}
-      <div style={{ flex: 1, position: 'relative', padding: '14px 16px' }}>
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 16 }}>
-          <div style={{ display: 'flex', gap: 5 }}>
-            <span style={{ width: 4, height: 4, borderRadius: '50%', background: project.accent }} />
-            <span style={{ width: 4, height: 4, borderRadius: '50%', background: project.accent }} />
-            <span style={{ width: 4, height: 4, borderRadius: '50%', background: project.accent }} />
+      {/* Body — agar real image hai to wahi dikhao, warna abstract UI */}
+      {project.img ? (
+        <div
+    style={{
+      flex: 1,
+      position: 'relative',
+      overflow: 'hidden',
+      background: project.bg, // gap fill ho jayega same gradient se
+    }}
+  >
+          <img
+            src={project.img}
+            alt={project.title}
+            style={{
+              position: 'absolute',
+              inset: 0,
+              width: '100%',
+              height: '100%',
+              objectFit: 'contain',
+              objectPosition: 'center',
+              display: 'block',
+            }}
+          />
+        </div>
+      ) : (
+        <div style={{ flex: 1, position: 'relative', padding: '14px 16px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 16 }}>
+            <div style={{ display: 'flex', gap: 5 }}>
+              <span style={{ width: 4, height: 4, borderRadius: '50%', background: project.accent }} />
+              <span style={{ width: 4, height: 4, borderRadius: '50%', background: project.accent }} />
+              <span style={{ width: 4, height: 4, borderRadius: '50%', background: project.accent }} />
+            </div>
+            <span style={{ width: 30, height: 8, borderRadius: 4, background: 'rgba(0,0,0,0.65)' }} />
           </div>
-          <span style={{ width: 30, height: 8, borderRadius: 4, background: 'rgba(0,0,0,0.65)' }} />
+          <div style={{ width: '58%', height: 9, borderRadius: 4, background: 'rgba(255,255,255,0.75)', marginBottom: 6 }} />
+          <div style={{ width: '38%', height: 9, borderRadius: 4, background: 'rgba(255,255,255,0.75)', marginBottom: 12 }} />
+          <div style={{ width: '26%', height: 12, borderRadius: 6, background: project.accent, marginBottom: 14 }} />
+          <div style={{ display: 'flex', gap: 6 }}>
+            <div style={{ flex: 1, height: 30, borderRadius: 5, background: 'rgba(255,255,255,0.75)' }} />
+            <div style={{ flex: 1, height: 30, borderRadius: 5, background: 'rgba(255,255,255,0.75)' }} />
+            <div style={{ flex: 1, height: 30, borderRadius: 5, background: 'rgba(255,255,255,0.75)' }} />
+          </div>
         </div>
-
-        <div style={{ width: '58%', height: 9, borderRadius: 4, background: 'rgba(255,255,255,0.75)', marginBottom: 6 }} />
-        <div style={{ width: '38%', height: 9, borderRadius: 4, background: 'rgba(255,255,255,0.75)', marginBottom: 12 }} />
-        <div style={{ width: '26%', height: 12, borderRadius: 6, background: project.accent, marginBottom: 14 }} />
-
-        <div style={{ display: 'flex', gap: 6 }}>
-          <div style={{ flex: 1, height: 30, borderRadius: 5, background: 'rgba(255,255,255,0.75)' }} />
-          <div style={{ flex: 1, height: 30, borderRadius: 5, background: 'rgba(255,255,255,0.75)' }} />
-          <div style={{ flex: 1, height: 30, borderRadius: 5, background: 'rgba(255,255,255,0.75)' }} />
-        </div>
-      </div>
+      )}
     </div>
   );
 }
@@ -238,57 +271,85 @@ export default function Portfolio() {
                 >
                   {/* Thumbnail — clickable, opens the live project */}
                   
-                   <a href={p.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{
-                      display: 'block',
-                      background: p.bg,
-                      height: 'clamp(160px, 25vw, 220px)',
-                      position: 'relative',
-                      overflow: 'hidden',
-                      transition: 'transform 0.5s',
-                      cursor: 'pointer',
-                    }}
-                    className="group-hover:scale-105"
-                  >
-                    <MockupThumbnail project={p} />
+                   <a
+ href={p.link}
+  target="_blank"
+  rel="noopener noreferrer"
+  style={{
+    display: "block",
+    background: p.bg,
+    aspectRatio: "3 / 2",   // 🔹 thoda kam height, image se better match
+    width: "100%",
+    position: "relative",
+    overflow: "hidden",
+    transition: "transform 0.5s",
+    cursor: "pointer",
+  }}
+  className="group-hover:scale-105"
+>
+  {p.img ? (
+    <img
+      src={p.img}
+      alt={p.title}
+      style={{
+        width: "100%",
+        height: "100%",
+        objectFit: "cover",
+        objectPosition: p.imgPosition || "center top",   // 🔹 left side ka important content safe
+        display: "block",
+      }}
+    />
 
-                    {/* Hover overlay */}
-                    <div
-                      style={{
-                        position: 'absolute',
-                        inset: 0,
-                        background: 'rgba(23,23,31,0)',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        transition: 'background 0.4s',
-                      }}
-                      className="group-hover:!bg-charcoal/40"
-                    >
-                      <span
-                        style={{
-                          fontFamily: 'var(--font-body)',
-                          fontSize: '13px',
-                          fontWeight: 600,
-                          color: '#fff',
-                          display: 'flex',
-                          alignItems: 'center',
-                          gap: '6px',
-                          opacity: 0,
-                          transform: 'translateY(8px)',
-                          transition: 'opacity 0.35s, transform 0.35s',
-                        }}
-                        className="group-hover:!opacity-100 group-hover:!translate-y-0"
-                      >
-                        View Project
-                        <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                        </svg>
-                      </span>
-                    </div>
-                  </a>
+) : (
+  <MockupThumbnail project={p} />
+)}
+
+  {/* Hover overlay */}
+  <div
+    style={{
+      position: "absolute",
+      inset: 0,
+      background: "rgba(23,23,31,0)",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      transition: "background 0.4s",
+    }}
+    className="group-hover:!bg-charcoal/40"
+  >
+    <span
+      style={{
+        fontFamily: "var(--font-body)",
+        fontSize: "13px",
+        fontWeight: 600,
+        color: "#fff",
+        display: "flex",
+        alignItems: "center",
+        gap: "6px",
+        opacity: 0,
+        transform: "translateY(8px)",
+        transition: "opacity 0.35s, transform 0.35s",
+      }}
+      className="group-hover:!opacity-100 group-hover:!translate-y-0"
+    >
+      View Project
+      <svg
+        width="14"
+        height="14"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        strokeWidth={2.5}
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M17 8l4 4m0 0l-4 4m4-4H3"
+        />
+      </svg>
+    </span>
+  </div>
+</a>
 
                   {/* Info */}
                   <div style={{ padding: 'clamp(18px, 3.5vw, 28px)' }}>
