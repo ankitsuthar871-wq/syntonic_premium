@@ -8,9 +8,14 @@ require('dotenv').config({ path: path.resolve(__dirname, '.env') });
 
 const app = express();
 
-// CORS configuration - Allow your frontend port (5174)
+// CORS configuration - local dev + live frontend dono allow
 app.use(cors({
-    origin: ["http://localhost:5174", "http://localhost:5173", "http://localhost:5175"], 
+    origin: [
+        "http://localhost:5174",
+        "http://localhost:5173",
+        "http://localhost:5175",
+        "https://syntonic-premium.vercel.app"   // 🔹 naya — live frontend
+    ],
     methods: ["GET", "POST"],
     credentials: true
 }));
@@ -38,6 +43,8 @@ app.get("/", (req, res) => {
     res.send("Backend is Running 🚀");
 });
 
-app.listen(5000, () => {
-    console.log("🚀 Server running on port 5000");
+// 🔹 Port update — Render apna khud ka PORT env variable deta hai
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+    console.log(`🚀 Server running on port ${PORT}`);
 });
