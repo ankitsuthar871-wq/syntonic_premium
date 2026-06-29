@@ -1,18 +1,31 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+const API_URL = "https://syntonic-backend.onrender.com";
+
 export default function AdminLogin() {
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    if (password === 'Admin123') {
-      localStorage.setItem('isAdmin', 'true');
-      // Redirect karne ka naya tarika
-      window.location.href = '/dashboard'; 
-    } else {
-      alert('Wrong password tyr again.');
+    try {
+      const res = await fetch(`${API_URL}/api/admin/login`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ password }),
+      });
+      const data = await res.json();
+
+      if (data.success) {
+        localStorage.setItem('isAdmin', 'true');
+        window.location.href = '/dashboard';
+      } else {
+        alert('Wrong password, try again.');
+      }
+    } catch (err) {
+      console.log(err);
+      alert('Something went wrong. Try again.');
     }
   };
 
