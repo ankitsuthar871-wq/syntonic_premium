@@ -1,12 +1,13 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+const API_URL = "https://syntonic-backend.onrender.com";
 
 export default function AdminDashboard() {
   const [contacts, setContacts] = useState([]);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    fetch("http://localhost:5000/api/admin/contacts")
+ useEffect(() => {
+    fetch(`${API_URL}/api/admin/contacts`)
       .then(res => res.json())
       .then(data => setContacts(data))
       .catch(err => console.log(err));

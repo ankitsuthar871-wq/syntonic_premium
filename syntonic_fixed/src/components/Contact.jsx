@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import ScrollReveal from './ui/ScrollReveal';
+const API_URL = "https://syntonic-backend.onrender.com";
 
 const socials = [
   
@@ -90,16 +91,13 @@ export default function Contact() {
   try {
     setStatus("sending");
 
-    const response = await fetch(
-      "http://localhost:5000/api/contact",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(form),
-      }
-    );
+   const response = await fetch(`${API_URL}/api/contact`, {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify(form),
+});
 
     const data = await response.json();
 
